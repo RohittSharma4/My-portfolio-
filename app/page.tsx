@@ -20,6 +20,7 @@ import {
 import Link from 'next/link'
 import { Hero } from '@/components/hero'
 import { Navbar } from '@/components/navbar'
+import { ProjectPreloader } from '@/components/project-preloader'
 import { Reveal } from '@/components/reveal'
 import { SectionHeading } from '@/components/section-heading'
 
@@ -70,6 +71,7 @@ const creative = [
 export default function Page() {
   return (
     <main className="min-h-screen overflow-hidden bg-background pt-24 md:pt-0">
+      <ProjectPreloader />
       <Navbar />
       <Hero />
 
