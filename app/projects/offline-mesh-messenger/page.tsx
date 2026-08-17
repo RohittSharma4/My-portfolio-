@@ -1,5 +1,3 @@
-'use client'
-
 import Link from 'next/link'
 import { ArrowLeft, ArrowUpRight, Radio, Sparkles } from 'lucide-react'
 
