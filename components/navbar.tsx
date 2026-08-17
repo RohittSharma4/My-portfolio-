@@ -86,14 +86,17 @@ export function Navbar() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="fixed inset-x-4 bottom-4 top-24 z-[9990] max-h-[calc(100dvh-7.5rem)] overflow-y-auto overscroll-contain md:hidden">
-          <ul className="glass glow-ring flex min-h-full flex-col gap-2 rounded-3xl border-white/15 bg-background/90 p-3 shadow-2xl backdrop-blur-2xl">
+        <nav
+          aria-label="Mobile navigation"
+          className="fixed inset-x-4 bottom-4 top-24 z-[9990] max-h-[calc(100dvh-7.5rem)] overflow-y-auto overscroll-contain md:hidden"
+        >
+          <ul className="glass glow-ring flex min-h-full flex-col gap-2 rounded-3xl border border-white/15 bg-background/95 p-3 shadow-2xl backdrop-blur-2xl">
             {links.map((link) => (
-              <li key={link.href}>
+              <li key={link.href} className="w-full">
                 <a
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="block rounded-2xl px-4 py-3 text-base text-foreground transition-colors hover:bg-white/5"
+                  className="flex min-h-12 w-full items-center rounded-2xl px-4 py-3 text-base font-medium text-foreground transition-colors hover:bg-white/10 active:bg-white/15"
                 >
                   {link.label}
                 </a>
@@ -109,7 +112,7 @@ export function Navbar() {
               </a>
             </li>
           </ul>
-        </div>
+        </nav>
       )}
     </header>
   )
