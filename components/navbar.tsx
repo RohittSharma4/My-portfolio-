@@ -70,16 +70,17 @@ export function Navbar() {
           Let&apos;s Talk
         </a>
 
-        <button
-          type="button"
-          aria-label={open ? 'Close menu' : 'Open menu'}
-          aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
-          className="glass relative z-[120] flex size-11 shrink-0 items-center justify-center rounded-full border-white/20 bg-background/70 text-foreground shadow-lg md:hidden"
-        >
-          {open ? <X className="size-5" /> : <Menu className="size-5" />}
-        </button>
       </nav>
+
+      <button
+        type="button"
+        aria-label={open ? 'Close menu' : 'Open menu'}
+        aria-expanded={open}
+        onClick={() => setOpen((v) => !v)}
+        className="glass absolute right-4 top-3 z-[9999] flex size-11 shrink-0 items-center justify-center rounded-full border-white/20 bg-background/90 text-foreground shadow-lg md:hidden"
+      >
+        {open ? <X className="size-5" /> : <Menu className="size-5" />}
+      </button>
 
       {open && <div className="fixed inset-0 z-[40] bg-background/60 backdrop-blur-sm md:hidden" aria-hidden="true" />}
 
