@@ -76,7 +76,7 @@ export function Navbar() {
         type="button"
         aria-label={open ? 'Close menu' : 'Open menu'}
         aria-expanded={open}
-        onClick={() => setOpen((v) => !v)}
+        onClick={() => setOpen(!open)}
         className="glass absolute right-4 top-3 z-[9999] flex size-11 shrink-0 items-center justify-center rounded-full border-white/20 bg-background/90 text-foreground shadow-lg md:hidden"
       >
         {open ? <X className="size-5" /> : <Menu className="size-5" />}
@@ -85,37 +85,32 @@ export function Navbar() {
       {open && <div className="fixed inset-0 z-[40] bg-background/60 backdrop-blur-sm md:hidden" aria-hidden="true" />}
 
       {/* Mobile menu */}
-      <div
-        className={cn(
-          'fixed inset-x-4 bottom-4 top-24 z-[70] max-h-[calc(100dvh-7.5rem)] origin-top overflow-y-auto overscroll-contain transition-all duration-300 md:hidden',
-          open
-            ? 'pointer-events-auto scale-100 opacity-100'
-            : 'pointer-events-none scale-95 opacity-0',
-        )}
-      >
-        <ul className="glass glow-ring flex min-h-full flex-col gap-2 rounded-3xl border-white/15 bg-background/90 p-3 shadow-2xl backdrop-blur-2xl">
-          {links.map((link) => (
-            <li key={link.href}>
+      {open && (
+        <div className="fixed inset-x-4 bottom-4 top-24 z-[9990] max-h-[calc(100dvh-7.5rem)] overflow-y-auto overscroll-contain md:hidden">
+          <ul className="glass glow-ring flex min-h-full flex-col gap-2 rounded-3xl border-white/15 bg-background/90 p-3 shadow-2xl backdrop-blur-2xl">
+            {links.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  className="block rounded-2xl px-4 py-3 text-base text-foreground transition-colors hover:bg-white/5"
+                >
+                  {link.label}
+                </a>
+              </li>
+            ))}
+            <li>
               <a
-                href={link.href}
+                href="#contact"
                 onClick={() => setOpen(false)}
-                className="block rounded-2xl px-4 py-3 text-base text-foreground transition-colors hover:bg-white/5"
+                className="mt-1 block rounded-2xl bg-primary px-4 py-3 text-center text-base font-medium text-primary-foreground"
               >
-                {link.label}
+                Let&apos;s Talk
               </a>
             </li>
-          ))}
-          <li>
-            <a
-              href="#contact"
-              onClick={() => setOpen(false)}
-              className="mt-1 block rounded-2xl bg-primary px-4 py-3 text-center text-base font-medium text-primary-foreground"
-            >
-              Let&apos;s Talk
-            </a>
-          </li>
-        </ul>
-      </div>
+          </ul>
+        </div>
+      )}
     </header>
   )
 }
