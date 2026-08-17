@@ -33,13 +33,13 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        'fixed inset-x-0 top-0 z-50 border-b border-transparent transition-all duration-300 max-md:border-white/10 max-md:bg-background/85 max-md:backdrop-blur-2xl',
+        'fixed inset-x-0 top-0 z-[100] border-b border-transparent transition-all duration-300 max-md:border-white/10 max-md:bg-background/90 max-md:backdrop-blur-2xl',
         scrolled ? 'py-3' : 'py-5',
       )}
     >
       <nav
         className={cn(
-          'mx-auto flex max-w-6xl items-center justify-between rounded-full px-5 py-3 transition-all duration-300 md:px-6',
+          'relative z-[110] mx-auto flex max-w-6xl items-center justify-between rounded-full px-5 py-3 transition-all duration-300 md:px-6',
           scrolled ? 'glass glow-ring mx-4' : 'mx-4 border border-transparent',
         )}
       >
@@ -75,7 +75,7 @@ export function Navbar() {
           aria-label={open ? 'Close menu' : 'Open menu'}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className="glass relative z-[80] flex size-10 items-center justify-center rounded-full text-foreground md:hidden"
+          className="glass relative z-[120] flex size-11 shrink-0 items-center justify-center rounded-full border-white/20 bg-background/70 text-foreground shadow-lg md:hidden"
         >
           {open ? <X className="size-5" /> : <Menu className="size-5" />}
         </button>
