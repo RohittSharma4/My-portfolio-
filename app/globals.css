@@ -1,0 +1,178 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+}
+
+:root {
+  color-scheme: dark;
+
+  /* Near-black futuristic base */
+  --background: oklch(0.11 0.012 265);
+  --foreground: oklch(0.98 0.005 260);
+
+  --card: oklch(0.16 0.015 265);
+  --card-foreground: oklch(0.98 0.005 260);
+  --popover: oklch(0.14 0.015 265);
+  --popover-foreground: oklch(0.98 0.005 260);
+
+  /* Electric blue */
+  --primary: oklch(0.65 0.19 258);
+  --primary-foreground: oklch(0.14 0.02 265);
+
+  --secondary: oklch(0.2 0.02 265);
+  --secondary-foreground: oklch(0.98 0.005 260);
+
+  --muted: oklch(0.2 0.018 265);
+  --muted-foreground: oklch(0.72 0.02 265);
+
+  /* Purple accent */
+  --accent: oklch(0.58 0.22 300);
+  --accent-foreground: oklch(0.98 0.005 260);
+
+  --destructive: oklch(0.62 0.24 25);
+
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 14%);
+  --ring: oklch(0.65 0.19 258);
+
+  --radius: 0.9rem;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: 'rlig' 1, 'calt' 1;
+  }
+}
+
+@layer utilities {
+  /* Glow text */
+  .text-glow-blue {
+    text-shadow: 0 0 24px oklch(0.65 0.19 258 / 0.55);
+  }
+  .text-glow-purple {
+    text-shadow: 0 0 24px oklch(0.58 0.22 300 / 0.55);
+  }
+
+  /* Gradient text */
+  .text-gradient {
+    background: linear-gradient(
+      100deg,
+      oklch(0.85 0.05 260),
+      oklch(0.65 0.19 258),
+      oklch(0.58 0.22 300)
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Glassmorphism card */
+  .glass {
+    background: linear-gradient(
+      160deg,
+      oklch(1 0 0 / 0.06),
+      oklch(1 0 0 / 0.02)
+    );
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid oklch(1 0 0 / 0.08);
+  }
+
+  /* Glow ring on hover */
+  .glow-ring {
+    box-shadow:
+      0 0 0 1px oklch(1 0 0 / 0.06),
+      0 0 40px -12px oklch(0.65 0.19 258 / 0.4);
+  }
+
+  .grid-bg {
+    background-image:
+      linear-gradient(oklch(1 0 0 / 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, oklch(1 0 0 / 0.035) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+}
+
+/* Scroll reveal animation */
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal {
+  opacity: 0;
+}
+.reveal.is-visible {
+  animation: reveal-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-18px) scale(1.03);
+  }
+}
+.animate-float {
+  animation: float-slow 9s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .reveal {
+    opacity: 1;
+    animation: none;
+  }
+  .animate-float {
+    animation: none;
+  }
+}
