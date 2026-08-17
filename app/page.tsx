@@ -68,7 +68,7 @@ const creative = [
 
 export default function Page() {
   return (
-    <main className="min-h-screen overflow-hidden bg-background">
+    <main className="min-h-screen overflow-hidden bg-background pt-24 md:pt-0">
       <Navbar />
       <Hero />
 

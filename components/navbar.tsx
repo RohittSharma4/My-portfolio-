@@ -33,7 +33,7 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        'fixed inset-x-0 top-0 z-50 transition-all duration-300',
+        'fixed inset-x-0 top-0 z-50 border-b border-transparent transition-all duration-300 max-md:border-white/10 max-md:bg-background/85 max-md:backdrop-blur-2xl',
         scrolled ? 'py-3' : 'py-5',
       )}
     >
