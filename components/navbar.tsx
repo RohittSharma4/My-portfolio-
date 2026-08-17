@@ -75,22 +75,24 @@ export function Navbar() {
           aria-label={open ? 'Close menu' : 'Open menu'}
           aria-expanded={open}
           onClick={() => setOpen((v) => !v)}
-          className="glass flex size-10 items-center justify-center rounded-full text-foreground md:hidden"
+          className="glass relative z-[80] flex size-10 items-center justify-center rounded-full text-foreground md:hidden"
         >
           {open ? <X className="size-5" /> : <Menu className="size-5" />}
         </button>
       </nav>
 
+      {open && <div className="fixed inset-0 z-[40] bg-background/60 backdrop-blur-sm md:hidden" aria-hidden="true" />}
+
       {/* Mobile menu */}
       <div
         className={cn(
-          'fixed inset-x-4 top-24 z-50 origin-top transition-all duration-300 md:hidden',
+          'fixed inset-x-4 bottom-4 top-24 z-[70] max-h-[calc(100dvh-7.5rem)] origin-top overflow-y-auto overscroll-contain transition-all duration-300 md:hidden',
           open
             ? 'pointer-events-auto scale-100 opacity-100'
             : 'pointer-events-none scale-95 opacity-0',
         )}
       >
-        <ul className="glass glow-ring flex flex-col gap-1 rounded-3xl p-3">
+        <ul className="glass glow-ring flex min-h-full flex-col gap-2 rounded-3xl border-white/15 bg-background/90 p-3 shadow-2xl backdrop-blur-2xl">
           {links.map((link) => (
             <li key={link.href}>
               <a
