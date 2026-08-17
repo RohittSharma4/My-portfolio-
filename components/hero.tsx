@@ -64,7 +64,7 @@ export function Hero() {
           <Reveal delay={320}>
             <dl className="mt-14 grid max-w-md grid-cols-3 gap-6">
               {[
-                { k: '5+', v: 'Projects Built' },
+                { k: '2', v: 'Projects in progress' },
                 { k: '3+', v: 'Years Creating' },
                 { k: '100%', v: 'Passion Driven' },
               ].map((stat) => (
