@@ -17,6 +17,7 @@ import {
   Sparkles,
   WandSparkles,
 } from 'lucide-react'
+import Link from 'next/link'
 import { Hero } from '@/components/hero'
 import { Navbar } from '@/components/navbar'
 import { Reveal } from '@/components/reveal'
@@ -109,13 +110,13 @@ export default function Page() {
             {projects.map((project, index) => (
               <Reveal key={project.title} delay={index * 100} as="article" className="group relative overflow-hidden rounded-3xl border border-border bg-card p-6 transition-all duration-500 hover:-translate-y-2 hover:border-primary/40 hover:shadow-[0_20px_70px_-30px_oklch(0.65_0.19_258_/_0.7)]">
                 {project.href ? (
-                  <a href={project.href} className="block h-full rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-label={`View ${project.title} project introduction`}>
+                  <Link href={project.href} prefetch className="block h-full rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary" aria-label={`View ${project.title} project introduction`}>
                     <div className={`absolute inset-0 -z-0 bg-gradient-to-br ${project.tone} opacity-60`} />
                     <div className="relative z-10 flex min-h-64 flex-col">
                       <div className="flex items-center justify-between"><span className="rounded-full border border-primary/25 bg-primary/10 px-3 py-1 text-xs text-primary">{project.status}</span><ArrowUpRight className="size-5 text-muted-foreground transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:text-primary" /></div>
                       <div className="mt-auto"><div className="mb-4 h-px w-12 bg-primary" /><h3 className="font-display text-2xl font-bold">{project.title}</h3><p className="mt-3 text-sm leading-relaxed text-muted-foreground">{project.description}</p><div className="mt-5 flex flex-wrap gap-2">{project.tags.map((tag) => <span key={tag} className="text-xs text-foreground/60">#{tag}</span>)}</div></div>
                     </div>
-                  </a>
+                  </Link>
                 ) : (
                   <div className="relative z-10 flex min-h-64 flex-col">
                     <div className="flex items-center justify-between"><span className="rounded-full border border-primary/25 bg-primary/10 px-3 py-1 text-xs text-primary">{project.status}</span><ArrowUpRight className="size-5 text-muted-foreground" /></div>
