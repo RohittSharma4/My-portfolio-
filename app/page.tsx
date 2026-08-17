@@ -63,9 +63,9 @@ const projects = [
 ]
 
 const creative = [
-  { title: 'Video Edits', type: 'Motion & storytelling', image: '/creative/video-edit.png', icon: Play },
-  { title: 'Graphic Design', type: 'Visual systems', image: '/creative/graphic-design.png', icon: Palette },
-  { title: 'Social Content', type: 'Content that connects', image: '/creative/social-media.png', icon: Sparkles },
+  { title: 'Video Edits', type: 'Motion & storytelling', image: '/creative/video-edit.png?v=dark-futuristic', icon: Play },
+  { title: 'Graphic Design', type: 'Visual systems', image: '/creative/graphic-design.png?v=dark-futuristic', icon: Palette },
+  { title: 'Social Content', type: 'Content that connects', image: '/creative/social-media.png?v=dark-futuristic', icon: Sparkles },
 ]
 
 export default function Page() {
